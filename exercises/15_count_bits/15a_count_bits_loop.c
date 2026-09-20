@@ -16,8 +16,13 @@
 int count_bits(int num) {
     int sum = 0;
     int i;
-
-#error TODO: Fix this exercise. Run "clings hint" for help.
+    for (i = 0;i<32;i++){
+        if(num & (1<<i))
+            sum++;
+        // /*bit cauculation*/ (1<<i) is to generate a number which is 1 in bit only in position 'i' 
+        // /*an wei yu*/ & is to transform a number in 2jingzhi than do yuyunsuan bits by bits
+        // only both input are true the output is true
+    }
     return sum;
 }
 

@@ -17,8 +17,11 @@
 
 char *mystrcpy(char *dest, const char *src) {
     assert(dest != NULL && src != NULL);
-
-#error TODO: Implement mystrcpy using pointer idiom. Run "clings hint" for help.
+    char *ret = dest;
+    while(*dest++ = *src++){
+        // a use-to habbit ,means first: pass value *dest = *src second: ++ pass to the next bit
+    }
+    return ret;
 }
 
 int main(void) {
@@ -28,7 +31,8 @@ int main(void) {
     fgets(s2, sizeof(s2), stdin);
     /* 去掉换行 */
     int i = 0;
-    while (s2[i] && s2[i] != '\n') i++;
+    while (s2[i] && s2[i] != '\n')
+        i++;
     s2[i] = '\0';
 
     mystrcpy(s1, s2);

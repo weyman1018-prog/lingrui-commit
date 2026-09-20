@@ -18,15 +18,24 @@
 
 #include <math.h>
 #include <stdio.h>
-
 int main(void) {
-    int num;
     int i;
-    int max = 0;
+    int max;
+  //  max = num;
+  //  printf("%d\n",max);
+    
+    for(int num=1;num<=100;num++){
+        //int tmp=(int)sqrt((double)num);
+        //int tmp=num;
+        for(i=2;i<num;i++){
+            if(num%i==0)
+                break;
+        }
+            if(i == num)
+                max= num;
 
-#error TODO: Fix this exercise. Run "clings hint" for help.
-
+}
     printf("max prime is %d\n", max);
-
     return 0;
+
 }

@@ -15,7 +15,7 @@
  *
  * 验证："This is a book" → "word 1 found!\nThis\n...there is 4 words found!\n"
  */
-
+// process machine // 
 #include <stdio.h>
 
 int get_input_type(char c) {
@@ -28,24 +28,62 @@ int get_input_type(char c) {
 
 int main(void) {
     char buf[512];
+
     int state = 0;
     int i = 0;
     int words = 0;
-    char *p = NULL;
     int counter = 0;
+    int input;
+
+    char *p = NULL;
 
     fgets(buf, sizeof(buf), stdin);
     /* 去掉换行 */
-    for (i = 0; buf[i]; i++)
+    for (i = 0; buf[i] != '\0'; i++){
         if (buf[i] == '\n') {
             buf[i] = '\0';
             break;
         }
+    }
 
-    i = 0;
-
-#error TODO: Implement state machine loop with 4 branches for word counting. Run "clings hint" for help.
-
+    i=0;
+    
+    while(buf[i] != '\0'){
+        char c = buf[i];
+        input = get_input_type(c);
+        //4 situation judgement
+        if(state == 0 && input == 0){
+            state = 0;
+        }else if (state==0 && input==1){
+            state = 1;
+            p=&buf[i];
+            counter = 0;
+            counter++;
+        }else if(state == 1 && input == 0){
+            state = 0;
+            words++;
+            printf("word %d found!\n",words);
+            for(int j=0; j<counter;j++){
+                printf("%c",p[j]);
+            }
+            printf("\n");
+            counter = 0;
+        }else if(state == 1 && input == 1){
+            state = 1;
+            counter++;
+        }
+        i++;
+    }
+    if(state == 1){
+        words++;
+        printf("word %d found!\n",words);
+        for(int j=0;j<counter;j++){
+            printf("%c",p[j]);
+        }
+        printf("\n");
+        counter = 0;
+    }
     printf("there is %d words found!\n", words);
+
     return 0;
 }

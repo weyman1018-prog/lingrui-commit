@@ -14,14 +14,15 @@
  */
 
 #include <stdio.h>
-
+    int j=1;
+    int sum;
 int main(void) {
-    int i;
-    int sum = 0;
-
-#error TODO: Fix this exercise. Run "clings hint" for help.
-
-#error TODO: Fix this exercise. Run "clings hint" for help.
-
+    for(int i=10;i>=1;i--)
+        printf("counter = %d\n",i);
+    do{
+        sum=sum+j;
+        j++;
+    }while(j<11);
+    printf("sum = %d\n",sum);
     return 0;
 }
